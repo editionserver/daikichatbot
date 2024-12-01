@@ -1,0 +1,258 @@
+/* Ana Layout */
+body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+
+/* Sidebar Stilleri */
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-chats {
+    flex: 1;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+
+.chat-item {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chat-item:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.chat-item.active {
+    background-color: rgba(255,255,255,0.3);
+}
+
+.sidebar-footer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Ana İçerik Alanı */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Chat Alanı */
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    margin: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+}
+
+/* Mesaj Stilleri */
+.message {
+    max-width: 80%;
+    margin-bottom: 1.5rem;
+    clear: both;
+}
+
+.user-message {
+    float: right;
+}
+
+.user-message p {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 12px 12px 0 12px;
+    padding: 1rem;
+    margin: 0;
+}
+
+.bot-message {
+    float: left;
+}
+
+.bot-message p {
+    background-color: #f1f3f5;
+    border-radius: 12px 12px 12px 0;
+    padding: 1rem;
+    margin: 0;
+}
+
+.system-message {
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.system-message p {
+    background-color: #e9ecef;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    margin: 0;
+}
+
+/* Örnek Sorular */
+.sample-queries {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.query-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.query-btn {
+    white-space: normal;
+    text-align: left;
+}
+
+/* Mesaj Gönderme Alanı */
+.chat-input {
+    padding: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.message-form {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.message-form textarea {
+    resize: none;
+    max-height: 150px;
+    padding-right: 4rem;
+}
+
+/* Yükleniyor Animasyonu */
+.typing-indicator {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background-color: #adb5bd;
+    border-radius: 50%;
+    animation: typing 1s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Dosya Ekleri */
+.attachment-image {
+    max-width: 300px;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+.attachment-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #495057;
+}
+
+.attachment-link:hover {
+    background-color: #e9ecef;
+}
+
+/* Responsif Tasarım */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -280px;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .chat-container {
+        margin: 0.5rem;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #fff;
+    }
+
+    .chat-container {
+        background-color: #2d2d2d;
+    }
+
+    .bot-message p {
+        background-color: #3d3d3d;
+        color: #fff;
+    }
+
+    .system-message p {
+        background-color: #3d3d3d;
+    }
+
+    .chat-input {
+        border-top-color: #3d3d3d;
+    }
+
+    .attachment-link {
+        background-color: #3d3d3d;
+        color: #fff;
+    }
+}
